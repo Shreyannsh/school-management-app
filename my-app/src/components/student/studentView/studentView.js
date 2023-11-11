@@ -1,63 +1,62 @@
+import "./studentView.css";
+
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { IoPersonAddOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
+
+import { setIsActive } from "../../../features/student/studentSlice";
 import { fetchStudents } from "../../../features/student/studentSlice";
 
 function StudentView() {
   const dispatch = useDispatch();
 
-  const { students, error, status } = useSelector((state) => state.students);
-
-  console.log(error);
-
+  const { students, status } = useSelector((state) => state.students);
   useEffect(() => {
-    dispatch(fetchStudents());
     if (status === "idle") {
+      dispatch(fetchStudents());
     }
-  }, []);
+    dispatch(setIsActive("student"));
+  }, [dispatch]);
 
   return (
     <div>
       <h1>Student List</h1>
+      <div className="addStudentComponent">
+        <Link className="addStudentLink" to="/studentForm/add/''">
+          <h2>
+            <IoPersonAddOutline className="icon" />
+            Add Student
+          </h2>
+        </Link>
+      </div>
 
-      {status === "pending" && <p>loading...</p>}
-      {/* {status === "rejected" && <p>{error}</p>} */}
+      <div className="studentList">
+        {students?.map((student) => (
+          <li key={student._id}>
+            <div className="studentProfile">
+              <Link
+                className="studentDetailLink"
+                to={`/studentDetails/${student._id}`}
+              >
+                <p className="value">
+                  name:
+                  <b className="studentText">{student.name}</b>
+                </p>
+                <p className="value">
+                  age:
+                  <b className="studentText">{student.age}</b>
+                </p>
 
-      {students?.map((student) => (
-        <li>
-          <div>
-            <Link to={`/studentDetails/${student._id}`}>
-              <p>
-                <b>Name:</b>
-                {student.name}
-              </p>
-              <p>
-                <b>Age:</b> {student.age}
-              </p>
-              <p>
-                <b>Gender:</b>
-                {student.gender}
-              </p>
-              <p>
-                <b>Marks:</b>
-                {student.marks}
-              </p>
-              <p>
-                <b>Garde:</b>
-                {student.grade}
-              </p>
-              <p>
-                <b>Attendance:</b>
-                {student.attendance}
-              </p>
-            </Link>
-          </div>
-        </li>
-      ))}
-
-      <Link to="/studentForm/add/''">
-        <h2>Add Student</h2>
-      </Link>
+                <p className="value">
+                  garde:
+                  <b className="studentText">{student.grade}</b>
+                </p>
+              </Link>
+            </div>
+          </li>
+        ))}
+      </div>
     </div>
   );
 }

@@ -1,13 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 import axios from "axios";
 
 export const fetchStudents = createAsyncThunk(
   "students/fetchStudents",
   async () => {
     const response = await axios.get(
-      "https://reduxtoolkit-example-student-management.tanaypratap.repl.co/students "
+      "https://reduxtoolkit-example-student-management.tanaypratap.repl.co/students"
     );
-    console.log(response);
+
     return response.data;
   }
 );
@@ -19,7 +20,7 @@ export const addStudentAsync = createAsyncThunk(
       "https://reduxtoolkit-example-student-management.tanaypratap.repl.co/students",
       newStudent
     );
-
+    console.log(response.data);
     return response.data;
   }
 );
@@ -39,9 +40,12 @@ export const updateStudentAsync = createAsyncThunk(
 export const deleteStudentAsync = createAsyncThunk(
   "students/deleteStudent",
   async (id) => {
+    console.log(id);
     const response = await axios.delete(
       `https://reduxtoolkit-example-student-management.tanaypratap.repl.co/students/${id}`
     );
+
+    console.log(response);
 
     return response.data;
   }
@@ -53,6 +57,8 @@ const initialState = {
   error: null,
   filter: "all",
   sortBy: "name",
+  show: false,
+  isActive: "",
 };
 
 export const studentSlice = createSlice({
@@ -67,14 +73,19 @@ export const studentSlice = createSlice({
     setSortBy: (state, action) => {
       state.sortBy = action.payload;
     },
+    setIsActive: (state, action) => {
+      state.isActive = action.payload;
+    },
   },
 
   extraReducers: {
     [fetchStudents.pending]: (state) => {
       state.status = "pending";
+      state.show = true;
     },
     [fetchStudents.fulfilled]: (state, action) => {
       state.status = "fulfilled";
+      state.show = false;
       state.students = action.payload;
     },
     [fetchStudents.rejected]: (state, action) => {
@@ -84,47 +95,61 @@ export const studentSlice = createSlice({
 
     [addStudentAsync.pending]: (state) => {
       state.status = "pending";
+      state.show = true;
     },
     [addStudentAsync.fulfilled]: (state, action) => {
       state.status = "fulfilled";
-      state.students = action.payload;
+      state.show = false;
+      state.students = [...state.students, action.payload];
+      toast.success("Student added successfully");
     },
     [addStudentAsync.rejected]: (state, action) => {
       state.status = "rejected";
+      state.show = false;
       state.error = action.error.message;
     },
     [updateStudentAsync.pending]: (state) => {
       state.status = "pending";
+      state.show = true;
     },
     [updateStudentAsync.fulfilled]: (state, action) => {
       state.status = "fulfilled";
+      state.show = false;
       const updatedStudent = action.payload;
       const studentIndex = state.students.findIndex(
-        (student) => student.id === updatedStudent.id
+        (student) => student._id === updatedStudent._id
       );
+      console.log(studentIndex);
       if (studentIndex !== -1) {
         state.students[studentIndex] = updatedStudent;
       }
+      toast.success("Details updated Successfully");
     },
     [updateStudentAsync.rejected]: (state, action) => {
       state.status = "rejected";
+      state.show = false;
+      state.error = action.error.message;
+    },
+    [deleteStudentAsync.pending]: (state) => {
+      state.status = "pending";
+      state.show = true;
+    },
+    [deleteStudentAsync.fulfilled]: (state, action) => {
+      state.status = "fulfilled";
+      state.show = false;
+      state.students = state.students.filter(({ _id }) => {
+        return _id !== action.payload.student._id;
+      });
+      toast("Student deleted");
+    },
+    [deleteStudentAsync.rejected]: (state, action) => {
+      state.status = "rejected";
+      state.show = false;
       state.error = action.error.message;
     },
   },
-  [deleteStudentAsync.pending]: (state) => {
-    state.status = "pending";
-  },
-  [deleteStudentAsync.fulfilled]: (state, action) => {
-    state.status = "fulfilled";
-    state.students = state.students.filter(
-      ({ _id }) => _id !== action.payload._id
-    );
-  },
-  [deleteStudentAsync.rejected]: (state) => {
-    state.status = "rejected";
-  },
 });
 
-export const { setFilter, setSortBy } = studentSlice.actions;
+export const { setFilter, setSortBy, setIsActive } = studentSlice.actions;
 
 export default studentSlice.reducer;

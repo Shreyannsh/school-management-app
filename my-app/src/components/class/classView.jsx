@@ -1,3 +1,6 @@
+import "./classView.css";
+
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
@@ -5,14 +8,20 @@ import {
   setSortBy,
   fetchStudents,
 } from "../../features/student/studentSlice";
-import { useEffect } from "react";
+import { useParams } from "react-router";
 
 function ClassView() {
   const dispatch = useDispatch();
 
+  const { className } = useParams();
+
   const { students, filter, sortBy } = useSelector((state) => state.students);
 
-  const filterHandler = students.filter(({ gender }) => {
+  const specificClassList = students.filter(
+    (student) => student.grade === className
+  );
+
+  const filterHandler = specificClassList.filter(({ gender }) => {
     if (filter === "all") return true;
     return gender === filter;
   });
@@ -25,47 +34,56 @@ function ClassView() {
     return 0;
   });
 
-  console.log(sortByHandler);
-
   const handleFilterByFunction = (text) => {
-    console.log(text);
     dispatch(setFilter(text));
   };
 
   const handleSortByFunction = (text) => {
-    console.log(text);
     dispatch(setSortBy(text));
   };
 
   useEffect(() => {
     dispatch(fetchStudents());
-  }, []);
+  }, [dispatch]);
 
   return (
-    <div>
-      <label>
-        Filter By -
-        <select onChange={(e) => handleFilterByFunction(e.target.value)}>
-          <option value="all">All</option>
-          <option value="Male">Boys</option>
-          <option value="Female">Girls</option>
-        </select>
-      </label>
-
-      <label>
-        Sort By -
-        <select onChange={(e) => handleSortByFunction(e.target.value)}>
-          <option value="name">name</option>
-          <option value="age"> Age</option>
-          <option value="marks">Marks</option>
-          <option value="attendance">Attendance</option>
-        </select>
-      </label>
-
-      <h1>Class View</h1>
+    <div className="parent">
+      <h1>{className} Class View</h1>
+      <div className="filterSection">
+        <div>
+          <label className="classViewLabel">
+            Filter By -
+            <select
+              className="selectBox"
+              onChange={(e) => handleFilterByFunction(e.target.value)}
+            >
+              <option value="all">All</option>
+              <option value="Male">Boys</option>
+              <option value="Female">Girls</option>
+            </select>
+          </label>
+        </div>
+        <div>
+          <label className="classViewLabel">
+            Sort By -
+            <select
+              className="selectBox"
+              onChange={(e) => handleSortByFunction(e.target.value)}
+            >
+              <option value="name">name</option>
+              <option value="age"> Age</option>
+              <option value="marks">Marks</option>
+              <option value="attendance">Attendance</option>
+            </select>
+          </label>
+        </div>
+      </div>
       <table>
         <thead>
           <tr>
+            <th>
+              <b>S.No.</b>
+            </th>
             <th>
               <b>Name</b>
             </th>
@@ -88,8 +106,9 @@ function ClassView() {
         </thead>
         <tbody>
           {sortByHandler.map(
-            ({ name, age, marks, attendance, grade, gender }) => (
-              <tr>
+            ({ name, age, marks, attendance, grade, gender }, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
                 <td>{name}</td>
                 <td>{age}</td>
                 <td>{gender ? gender : "-"}</td>

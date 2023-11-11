@@ -1,6 +1,9 @@
+import "./studentForm.css";
+
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useParams } from "react-router";
+import { toast } from "react-toastify";
 
 import {
   addStudentAsync,
@@ -25,19 +28,50 @@ function StudentForm() {
     marks: "",
   });
 
+  // const [editInfo, setEditInfo] = useState({
+  //   name: "",
+  //   age: "",
+  //   grade: "",
+  //   gender: "boy",
+  //   attendance: "",
+  //   marks: "",
+  // });
+
+  // const [isTrue, setIsTrue] = useState([]);
+
+  // const isEqual = () => {
+  //   const studentKeys = Object.keys(studentInfo);
+  //   const editKeys = Object.keys(editInfo);
+
+  //   for (let key of studentKeys) {
+  //     if (studentKeys[key] === editKeys[key]) {
+  //       setIsTrue([...isTrue, true]);
+  //     } else {
+  //       setIsTrue([...isTrue, false]);
+  //     }
+  //   }
+  // };
+  console.log(studentInfo);
+
   const handleAddStudent = () => {
     if (mode === "edit") {
       dispatch(updateStudentAsync({ id, studentInfo }));
     } else {
-      dispatch(addStudentAsync(studentInfo));
-      setStudentInfo({
-        name: "",
-        age: "",
-        grade: "",
-        gender: "boy",
-        attendance: "",
-        marks: "",
-      });
+      const values = Object.values(studentInfo).slice(0, 4);
+      console.log(values);
+      if (values.includes("")) {
+        toast.error("a field is missing");
+      } else {
+        dispatch(addStudentAsync(studentInfo));
+        setStudentInfo({
+          name: "",
+          age: "",
+          grade: "",
+          gender: "boy",
+          attendance: "",
+          marks: "",
+        });
+      }
     }
   };
 
@@ -51,99 +85,129 @@ function StudentForm() {
         attendance: student?.attendance,
         marks: student?.marks,
       });
+
+      // setEditInfo({
+      //   name: student?.name,
+      //   age: student?.age,
+      //   grade: student?.grade,
+      //   gender: student?.gender,
+      //   attendance: student?.attendance,
+      //   marks: student?.marks,
+      // });
     }
   }, [mode]);
 
-  return (
-    <div>
-      <h1>{mode === "edit" ? "Edit Student" : "Add Student"}</h1>
-      <label>
-        Name:
-        <input
-          type="text"
-          placeholder="student name"
-          value={studentInfo.name}
-          onChange={(e) =>
-            setStudentInfo({ ...studentInfo, name: e.target.value })
-          }
-        />
-      </label>
-      <label>
-        Age:
-        <input
-          type="number"
-          placeholder="student Age"
-          value={studentInfo.age}
-          onChange={(e) =>
-            setStudentInfo({ ...studentInfo, age: e.target.value })
-          }
-        />
-      </label>
-      <div>
-        <label>
-          Gender:
-          <input
-            type="radio"
-            name="gender"
-            value="Male"
-            onChange={(e) =>
-              setStudentInfo({ ...studentInfo, gender: e.target.value })
-            }
-          />
-          Male
-        </label>
+  // useEffect(() => {
+  //   isEqual();
+  // }, [studentInfo]);
 
-        <label>
-          <input
-            type="radio"
-            name="gender"
-            value="Female"
-            onChange={(e) =>
-              setStudentInfo({ ...studentInfo, gender: e.target.value })
-            }
-          />
-          Female
-        </label>
-        <label>
-          Grade:
-          <input
-            type="text"
-            value={studentInfo.grade}
-            onChange={(e) =>
-              setStudentInfo({ ...studentInfo, grade: e.target.value })
-            }
-          />
-        </label>
+  return (
+    <div className="parent">
+      <h1>{mode === "edit" ? "Edit Student" : "Add Student"}</h1>
+      <div className="studentForm">
+        <div className="inputSection">
+          <label className="formTitle">
+            <span>Name:</span>
+            <input
+              className="forminputName"
+              type="text"
+              placeholder="student name"
+              value={studentInfo.name}
+              onChange={(e) =>
+                setStudentInfo({ ...studentInfo, name: e.target.value })
+              }
+            />
+          </label>
+          <label className="formTitle">
+            Age:
+            <input
+              className="forminput"
+              type="number"
+              placeholder="student Age"
+              value={studentInfo.age}
+              onChange={(e) =>
+                setStudentInfo({ ...studentInfo, age: e.target.value })
+              }
+            />
+          </label>
+        </div>
+        <div className="inputSection">
+          <div>
+            <label className="formTitle">
+              Gender:
+              <input
+                className="forminputRadio"
+                type="radio"
+                name="gender"
+                value="Male"
+                checked={studentInfo.gender === "Male" ? true : ""}
+                onChange={(e) =>
+                  setStudentInfo({ ...studentInfo, gender: e.target.value })
+                }
+              />
+              Male
+            </label>
+
+            <label>
+              <input
+                className="forminputRadio"
+                type="radio"
+                name="gender"
+                value="Female"
+                checked={studentInfo.gender === "Female" ? true : ""}
+                onChange={(e) =>
+                  setStudentInfo({ ...studentInfo, gender: e.target.value })
+                }
+              />
+              Female
+            </label>
+          </div>
+          <label className="formTitle">
+            Grade:
+            <input
+              className="forminput"
+              type="text"
+              placeholder="Student Grade"
+              value={studentInfo.grade}
+              onChange={(e) =>
+                setStudentInfo({ ...studentInfo, grade: e.target.value })
+              }
+            />
+          </label>
+        </div>
+
+        {mode === "edit" && (
+          <div className="inputSection">
+            <label className="formTitle">
+              Attendance:
+              <input
+                className="forminput"
+                type="number"
+                placeholder="attendance"
+                value={studentInfo.attendance}
+                onChange={(e) =>
+                  setStudentInfo({ ...studentInfo, attendance: e.target.value })
+                }
+              />
+            </label>
+            <label className="formTitle">
+              Marks:
+              <input
+                className="forminput"
+                type="number"
+                placeholder="marks"
+                value={studentInfo.marks}
+                onChange={(e) =>
+                  setStudentInfo({ ...studentInfo, marks: e.target.value })
+                }
+              />
+            </label>
+          </div>
+        )}
       </div>
-      {mode === "edit" && (
-        <>
-          <label>
-            Attendance
-            <input
-              type="number"
-              placeholder="attendance"
-              value={studentInfo.attendance}
-              onChange={(e) =>
-                setStudentInfo({ ...studentInfo, attendance: e.target.value })
-              }
-            />
-          </label>
-          <label>
-            Marks:
-            <input
-              type="number"
-              placeholder="marks"
-              value={studentInfo.marks}
-              onChange={(e) =>
-                setStudentInfo({ ...studentInfo, marks: e.target.value })
-              }
-            />
-          </label>
-        </>
-      )}
       <div>
-        <button onClick={() => handleAddStudent()}>
-          {mode === "edit" ? "Edit Student" : "Add Student"}
+        <button className="addBtn" onClick={() => handleAddStudent()}>
+          {mode === "edit" ? "Update" : "Add"}
         </button>
       </div>
     </div>
