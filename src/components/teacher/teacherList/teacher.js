@@ -18,8 +18,6 @@ function Teacher() {
     a.name.localeCompare(b.name)
   );
 
-  console.log(teachers);
-
   useEffect(() => {
     if (status === "idle") {
       dispatch(fetchTeacher());
@@ -39,30 +37,37 @@ function Teacher() {
           </h2>
         </Link>
       </div>
+
       <div className="List">
-        {alphabeticSortedTeacher?.map((teacher) => (
-          <li key={teacher._id}>
-            <div className="profile">
-              <Link
-                className="detailLink"
-                to={`/teacherDetails/${teacher._id}`}
-              >
-                <p className="value">
-                  Name:
-                  <b className="textValue">{teacher.name}</b>
-                </p>
-                <p className="value">
-                  Subject:
-                  <b className="textValue">{teacher.subject}</b>
-                </p>
-                <p className="value">
-                  Contact:
-                  <b className="textValue"> {teacher.contactNumber}</b>
-                </p>
-              </Link>
-            </div>
-          </li>
-        ))}
+        {alphabeticSortedTeacher.length <= 0 ? (
+          <div className="notFoundMsg">
+            <div className="message">No Teacher added Yet !</div>
+          </div>
+        ) : (
+          alphabeticSortedTeacher?.map((teacher) => (
+            <li key={teacher._id}>
+              <div className="profile">
+                <Link
+                  className="detailLink"
+                  to={`/teacherDetails/${teacher._id}`}
+                >
+                  <p className="value">
+                    Name:
+                    <b className="textValue">{teacher.name}</b>
+                  </p>
+                  <p className="value">
+                    Subject:
+                    <b className="textValue">{teacher.subject}</b>
+                  </p>
+                  <p className="value">
+                    Contact:
+                    <b className="textValue"> {teacher.contactNumber}</b>
+                  </p>
+                </Link>
+              </div>
+            </li>
+          ))
+        )}
       </div>
     </div>
   );

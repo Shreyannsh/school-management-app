@@ -1,6 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
+
+// const navigate = useNavigate();
 
 export const fetchStudents = createAsyncThunk(
   "students/fetchStudents",
@@ -102,6 +105,7 @@ export const studentSlice = createSlice({
       state.show = false;
       state.students = [...state.students, action.payload];
       toast.success("Student added successfully");
+      // navigate("/");
     },
     [addStudentAsync.rejected]: (state, action) => {
       state.status = "rejected";
@@ -119,7 +123,7 @@ export const studentSlice = createSlice({
       const studentIndex = state.students.findIndex(
         (student) => student._id === updatedStudent._id
       );
-      console.log(studentIndex);
+
       if (studentIndex !== -1) {
         state.students[studentIndex] = updatedStudent;
       }

@@ -23,7 +23,13 @@ function TeacherDetails() {
   );
 
   if (!particularTeacher) {
-    return <div>Teacher not found.</div>;
+    return (
+      <div>
+        <div className="notFoundMsg">
+          <div className="message">Teacher not found !</div>
+        </div>
+      </div>
+    );
   }
 
   return (

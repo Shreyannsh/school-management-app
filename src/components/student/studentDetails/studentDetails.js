@@ -17,7 +17,11 @@ function StudentDetails() {
   const { show } = useSelector((state) => state.students);
 
   if (!particularStudent) {
-    return <div>Student not found.</div>;
+    return (
+      <div className="notFoundMsg">
+        <div className="message">Student not found !</div>
+      </div>
+    );
   }
 
   return (

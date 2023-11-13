@@ -39,30 +39,36 @@ function StudentView() {
       </div>
 
       <div className="List">
-        {alphabeticSortedStudent?.map((student) => (
-          <li key={student._id}>
-            <div className="profile">
-              <Link
-                className="detailLink"
-                to={`/studentDetails/${student._id}`}
-              >
-                <p className="value">
-                  name:
-                  <b className="textValue">{student.name}</b>
-                </p>
-                <p className="value">
-                  age:
-                  <b className="textValue">{student.age} years</b>
-                </p>
+        {alphabeticSortedStudent.length <= 0 ? (
+          <div className="notFoundMsg">
+            <div className="message">No Student added Yet !</div>
+          </div>
+        ) : (
+          alphabeticSortedStudent?.map((student) => (
+            <li key={student._id}>
+              <div className="profile">
+                <Link
+                  className="detailLink"
+                  to={`/studentDetails/${student._id}`}
+                >
+                  <p className="value">
+                    name:
+                    <b className="textValue">{student.name}</b>
+                  </p>
+                  <p className="value">
+                    age:
+                    <b className="textValue">{student.age} years</b>
+                  </p>
 
-                <p className="value">
-                  garde:
-                  <b className="textValue">{student.grade}th</b>
-                </p>
-              </Link>
-            </div>
-          </li>
-        ))}
+                  <p className="value">
+                    garde:
+                    <b className="textValue">{student.grade}th</b>
+                  </p>
+                </Link>
+              </div>
+            </li>
+          ))
+        )}
       </div>
     </div>
   );

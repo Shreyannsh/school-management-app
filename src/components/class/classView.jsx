@@ -17,6 +17,8 @@ function ClassView() {
 
   const { students, filter, sortBy } = useSelector((state) => state.students);
 
+  console.log(students);
+
   const specificClassList = students.filter(
     (student) => student.grade === className
   );

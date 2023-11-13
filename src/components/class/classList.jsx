@@ -23,14 +23,22 @@ function ClassList() {
     <div>
       <h1>Classes</h1>
       <div className="classList">
-        {classList.map((className) => (
-          <li key={className} className="classComponent">
-            <Link className="classLink" to={`/classView/${className}`}>
-              <p>{className}th</p>
-              <p className="classSpell">class</p>
-            </Link>
-          </li>
-        ))}
+        {classList.length <= 0 ? (
+          <div className="notFoundMsg">
+            <div className="message">
+              Class list will not appear without student list !
+            </div>
+          </div>
+        ) : (
+          classList.map((className) => (
+            <li key={className} className="classComponent">
+              <Link className="classLink" to={`/classView/${className}`}>
+                <p>{className}th</p>
+                <p className="classSpell">class</p>
+              </Link>
+            </li>
+          ))
+        )}
       </div>
     </div>
   );

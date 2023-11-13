@@ -2,6 +2,7 @@
 import "../../../common.css";
 
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router";
 import { toast } from "react-toastify";
@@ -16,6 +17,7 @@ function StudentForm() {
   const show = useSelector((state) => state.students.show);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { state } = useLocation();
 
@@ -59,6 +61,7 @@ function StudentForm() {
   const handleAddStudent = () => {
     if (mode === "edit") {
       dispatch(updateStudentAsync({ id, studentInfo }));
+      navigate(`/studentDetails/${id}`);
     } else {
       const values = Object.values(studentInfo).slice(0, 4);
       if (values.includes("")) {
@@ -70,8 +73,8 @@ function StudentForm() {
           age: "",
           grade: "",
           gender: "boy",
-          attendance: "",
-          marks: "",
+          attendance: 0,
+          marks: 0,
         });
       }
     }

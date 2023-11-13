@@ -4,6 +4,7 @@
   display: flex;
   flex-wrap: wrap;
   list-style: none;
+  height: 100%;
 }
 
 .profile {
@@ -220,4 +221,22 @@
   display: flex;
   justify-content: space-around;
   padding: 0rem 2rem;
+}
+
+.notFoundMsg {
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  height: 100%;
+  width: 100%;
+  margin-top: 5rem;
+  color: red;
+}
+
+.message {
+  border: transparent;
+  font-weight: 500;
+  padding: 25px 20px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 15px rgb(255, 0, 0, 0.25);
 }

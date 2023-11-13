@@ -5,6 +5,7 @@ import {
 } from "../../../features/teacher/teacherSlice";
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import "./teacherForm.css";
@@ -14,6 +15,7 @@ import Loading from "../../loading/loading";
 
 const TeacherForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { state } = useLocation();
   const teacher = state;
   const { mode, id } = useParams();
@@ -29,6 +31,7 @@ const TeacherForm = () => {
   const handleAdd = () => {
     if (mode === "edit") {
       dispatch(updateTeacherAsync({ id, teacherInfo }));
+      navigate(`/teacherDetails/${id}`);
     } else {
       const values = Object.values(teacherInfo);
       if (values.includes("")) {
