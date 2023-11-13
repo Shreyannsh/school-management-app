@@ -8,7 +8,11 @@ import { deleteTeacherAsync } from "../../../features/teacher/teacherSlice";
 import Loading from "../../loading/loading";
 
 function TeacherDetails() {
-  const { show } = useSelector((state) => state.teachers);
+  const { show, status, teachers } = useSelector((state) => state.teachers);
+
+  console.log(show, "show");
+  console.log(status, "status");
+  console.log(teachers, "teachers list");
 
   const { id } = useParams();
 

@@ -35,13 +35,15 @@ function StudentDetails() {
           </p>
           <p>
             <b>Attendance:</b>
-            {particularStudent.attendance}
+            {particularStudent.attendance
+              ? `${particularStudent.attendance}%`
+              : "N/A"}
           </p>
         </div>
         <div className="subSection2">
           <p>
             <b>Marks:</b>
-            {particularStudent.marks}
+            {particularStudent.marks ? particularStudent.marks : "N/A"}
           </p>
 
           <p>

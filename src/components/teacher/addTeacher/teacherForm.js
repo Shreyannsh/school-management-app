@@ -32,7 +32,7 @@ const TeacherForm = () => {
     } else {
       const values = Object.values(teacherInfo);
       if (values.includes("")) {
-        toast.error("a field is missing");
+        toast.error("field is missing");
       } else {
         dispatch(addTeacherAsync(teacherInfo));
         setTeacherInfo({
@@ -74,6 +74,7 @@ const TeacherForm = () => {
           <label className="formTitle">
             <input
               className="forminput"
+              placeholder="name"
               type="text"
               value={teacherInfo.name}
               onChange={(e) =>
@@ -84,6 +85,7 @@ const TeacherForm = () => {
           <label className="formTitle">
             <input
               className="forminput"
+              placeholder="subject"
               type="text"
               value={teacherInfo.subject}
               onChange={(e) =>
@@ -94,6 +96,7 @@ const TeacherForm = () => {
           <label className="formTitle">
             <input
               className="forminput"
+              placeholder="contact number"
               type="text"
               value={teacherInfo.contactNumber}
               onChange={(e) =>

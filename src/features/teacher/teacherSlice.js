@@ -97,10 +97,13 @@ export const teacherSlice = createSlice({
       state.status = "fulfilled";
       state.show = false;
       const updatedTeacher = action.payload;
+      console.log(updatedTeacher);
       const teacherIndex = state.teachers.findIndex(
         (teacher) => teacher._id === updatedTeacher._id
       );
-      if (!teacherIndex === -1) {
+      console.log(teacherIndex, typeof teacherIndex);
+      if (teacherIndex !== -1) {
+        console.log("yes");
         state.teachers[teacherIndex] = updatedTeacher;
       }
 
@@ -118,8 +121,9 @@ export const teacherSlice = createSlice({
     [deleteTeacherAsync.fulfilled]: (state, action) => {
       state.status = "fulfilled";
       state.show = false;
+      console.log(action);
       state.teachers = state.teachers.filter(
-        (teacher) => teacher._id !== action.payload._id
+        (teacher) => teacher._id !== action.payload.teacher._id
       );
 
       toast.success("Teacher deleted suceessfully");

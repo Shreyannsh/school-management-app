@@ -14,6 +14,10 @@ function Teacher() {
 
   const { teachers, show, status } = useSelector((state) => state.teachers);
 
+  const alphabeticSortedTeacher = [...teachers].sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
+
   console.log(teachers);
 
   useEffect(() => {
@@ -21,7 +25,7 @@ function Teacher() {
       dispatch(fetchTeacher());
     }
     dispatch(setIsActive("teacher"));
-  }, [dispatch]);
+  }, [dispatch, teachers]);
 
   return (
     <div>
@@ -36,7 +40,7 @@ function Teacher() {
         </Link>
       </div>
       <div className="List">
-        {teachers?.map((teacher) => (
+        {alphabeticSortedTeacher?.map((teacher) => (
           <li key={teacher._id}>
             <div className="profile">
               <Link

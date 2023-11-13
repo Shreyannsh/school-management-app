@@ -21,6 +21,10 @@ function StudentView() {
     dispatch(setIsActive("student"));
   }, [dispatch]);
 
+  const alphabeticSortedStudent = [...students].sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
+
   return (
     <div>
       <Loading show={show} />
@@ -35,7 +39,7 @@ function StudentView() {
       </div>
 
       <div className="List">
-        {students?.map((student) => (
+        {alphabeticSortedStudent?.map((student) => (
           <li key={student._id}>
             <div className="profile">
               <Link

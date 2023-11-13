@@ -55,7 +55,7 @@ function School() {
         </p>
         <p>
           <b>Average Attendance : </b>
-          {averageAttendance.toFixed(2)}
+          {averageAttendance.toFixed(2)} %
         </p>
         <p>
           <b>Average Marks : </b>
