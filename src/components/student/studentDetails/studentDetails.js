@@ -48,7 +48,7 @@ function StudentDetails() {
 
           <p>
             <b>Garde:</b>
-            {particularStudent.grade}
+            {particularStudent.grade}th
           </p>
           <p>
             <b>Gender:</b>

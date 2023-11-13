@@ -52,12 +52,12 @@ function StudentView() {
                 </p>
                 <p className="value">
                   age:
-                  <b className="textValue">{student.age}</b>
+                  <b className="textValue">{student.age} years</b>
                 </p>
 
                 <p className="value">
                   garde:
-                  <b className="textValue">{student.grade}</b>
+                  <b className="textValue">{student.grade}th</b>
                 </p>
               </Link>
             </div>

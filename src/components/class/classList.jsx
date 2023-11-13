@@ -26,7 +26,7 @@ function ClassList() {
         {classList.map((className) => (
           <li key={className} className="classComponent">
             <Link className="classLink" to={`/classView/${className}`}>
-              <p>{className}</p>
+              <p>{className}th</p>
               <p className="classSpell">class</p>
             </Link>
           </li>

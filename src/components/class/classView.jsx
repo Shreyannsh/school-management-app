@@ -48,7 +48,7 @@ function ClassView() {
 
   return (
     <div className="parent">
-      <h1>{className} Class View</h1>
+      <h1>{className}th Class View</h1>
       <div className="filterSection">
         <div>
           <label className="classViewLabel">
