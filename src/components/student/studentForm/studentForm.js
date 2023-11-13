@@ -1,7 +1,8 @@
-import "./studentForm.css";
+// import "./studentForm.css";
+import "../../../common.css";
 
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router";
 import { toast } from "react-toastify";
 
@@ -9,8 +10,11 @@ import {
   addStudentAsync,
   updateStudentAsync,
 } from "../../../features/student/studentSlice";
+import Loading from "../../loading/loading";
 
 function StudentForm() {
+  const show = useSelector((state) => state.students.show);
+
   const dispatch = useDispatch();
 
   const { state } = useLocation();
@@ -51,14 +55,12 @@ function StudentForm() {
   //     }
   //   }
   // };
-  console.log(studentInfo);
 
   const handleAddStudent = () => {
     if (mode === "edit") {
       dispatch(updateStudentAsync({ id, studentInfo }));
     } else {
       const values = Object.values(studentInfo).slice(0, 4);
-      console.log(values);
       if (values.includes("")) {
         toast.error("a field is missing");
       } else {
@@ -103,8 +105,9 @@ function StudentForm() {
 
   return (
     <div className="parent">
+      <Loading show={show} />
       <h1>{mode === "edit" ? "Edit Student" : "Add Student"}</h1>
-      <div className="studentForm">
+      <div className="addForm">
         <div className="inputSection">
           <label className="formTitle">
             <span>Name:</span>

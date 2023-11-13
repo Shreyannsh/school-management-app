@@ -1,21 +1,20 @@
-import "./studentDetails.css";
+import "../../../common.css";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 
 import { deleteStudentAsync } from "../../../features/student/studentSlice";
+import Loading from "../../loading/loading";
 
 function StudentDetails() {
   const { id } = useParams();
+  const dispatch = useDispatch();
 
   const particularStudent = useSelector((state) =>
     state.students.students.find((student) => student._id === id)
   );
 
-  const dispatch = useDispatch();
-
-  // const particularStudent = students.find((student) => student._id === id);
-  console.log(particularStudent);
+  const { show } = useSelector((state) => state.students);
 
   if (!particularStudent) {
     return <div>Student not found.</div>;
@@ -23,8 +22,9 @@ function StudentDetails() {
 
   return (
     <div className="parent">
+      <Loading show={show} />
       <h1>Student Details</h1>
-      <div className="studentDetailPage">
+      <div className="detailPage">
         <div className="subSection1">
           <p>
             <b>Name:</b>
@@ -57,7 +57,7 @@ function StudentDetails() {
       <div className="btnSection">
         <div>
           <Link
-            className="editStudentLink"
+            className="editLink"
             to={`/studentForm/edit/${particularStudent._id}`}
             state={particularStudent}
           >

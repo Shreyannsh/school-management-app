@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const schoolSlice = createSlice({
+export const schoolSlice = createSlice({
   name: "school",
   initialState: {
     totalStudents: 0,
@@ -20,4 +20,4 @@ const schoolSlice = createSlice({
 
 export const { updateSchoolStats } = schoolSlice.actions;
 
-export default schoolSlice;
+export default schoolSlice.reducer;

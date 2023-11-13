@@ -1,59 +1,59 @@
-// import "./studentView.css";
 import "../../../common.css";
 
+import { useDispatch, useSelector } from "react-redux";
+import { IoPersonAddOutline } from "react-icons/io5";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { IoPersonAddOutline } from "react-icons/io5";
-import { useDispatch, useSelector } from "react-redux";
 
+import { fetchTeacher } from "../../../features/teacher/teacherSlice";
 import { setIsActive } from "../../../features/student/studentSlice";
-import { fetchStudents } from "../../../features/student/studentSlice";
 import Loading from "../../loading/loading";
 
-function StudentView() {
+function Teacher() {
   const dispatch = useDispatch();
 
-  const { students, status, show } = useSelector((state) => state.students);
+  const { teachers, show, status } = useSelector((state) => state.teachers);
+
+  console.log(teachers);
+
   useEffect(() => {
     if (status === "idle") {
-      dispatch(fetchStudents());
+      dispatch(fetchTeacher());
     }
-    dispatch(setIsActive("student"));
+    dispatch(setIsActive("teacher"));
   }, [dispatch]);
 
   return (
     <div>
       <Loading show={show} />
-      <h1>Student List</h1>
+      <h1>Teachers List</h1>
       <div className="addComponent">
-        <Link className="addLink" to="/studentForm/add/''">
+        <Link className="addLink" to="/teacherForm/add/''">
           <h2>
             <IoPersonAddOutline className="icon" />
-            Add Student
+            Add Teacher
           </h2>
         </Link>
       </div>
-
       <div className="List">
-        {students?.map((student) => (
-          <li key={student._id}>
+        {teachers?.map((teacher) => (
+          <li key={teacher._id}>
             <div className="profile">
               <Link
                 className="detailLink"
-                to={`/studentDetails/${student._id}`}
+                to={`/teacherDetails/${teacher._id}`}
               >
                 <p className="value">
-                  name:
-                  <b className="textValue">{student.name}</b>
+                  Name:
+                  <b className="textValue">{teacher.name}</b>
                 </p>
                 <p className="value">
-                  age:
-                  <b className="textValue">{student.age}</b>
+                  Subject:
+                  <b className="textValue">{teacher.subject}</b>
                 </p>
-
                 <p className="value">
-                  garde:
-                  <b className="textValue">{student.grade}</b>
+                  Contact:
+                  <b className="textValue"> {teacher.contactNumber}</b>
                 </p>
               </Link>
             </div>
@@ -64,4 +64,4 @@ function StudentView() {
   );
 }
 
-export default StudentView;
+export default Teacher;

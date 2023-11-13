@@ -14,10 +14,13 @@ import StudentView from "./components/student/studentView/studentView";
 import ClassList from "./components/class/classList";
 import Loading from "./components/loading/loading";
 import { fetchStudents } from "./features/student/studentSlice";
+import Teacher from "./components/teacher/teacherList/teacher";
+import TeacherForm from "./components/teacher/addTeacher/teacherForm";
+import TeacherDetails from "./components/teacher/teacherDeatils/teacherDetails";
 
 export default function App() {
   const dispatch = useDispatch();
-  const { error, show, isActive } = useSelector((state) => state.students);
+  const { error, isActive } = useSelector((state) => state.students);
 
   useEffect(() => {
     dispatch(fetchStudents());
@@ -37,7 +40,7 @@ export default function App() {
         pauseOnHover
         theme="light"
       />
-      <Loading show={show} />
+
       {error && toast.error({ error })}
 
       <nav className="navigationBar">
@@ -60,6 +63,12 @@ export default function App() {
             Class
           </Link>
           <Link
+            className={isActive === "teacher" ? "isActive" : "link"}
+            to="/teacherList"
+          >
+            Teacher
+          </Link>
+          <Link
             className={isActive === "school" ? "isActive" : "link"}
             to="/school"
           >
@@ -75,6 +84,10 @@ export default function App() {
           <Route path="/studentForm/:mode/:id" element={<StudentForm />} />
           <Route path="/classList" element={<ClassList />} />
           <Route path="/classView/:className" element={<ClassView />} />
+          <Route path="/teacherList" element={<Teacher />} />
+          <Route path="/teacherDetails/:id" element={<TeacherDetails />} />
+          <Route path="/addTeacher/:mode/:id" element={<addTeacher />} />
+          <Route path="/teacherForm/:mode/:id" element={<TeacherForm />} />
           <Route path="/school" element={<School />} />
         </Routes>
       </div>

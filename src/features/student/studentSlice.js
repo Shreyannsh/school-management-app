@@ -6,7 +6,7 @@ export const fetchStudents = createAsyncThunk(
   "students/fetchStudents",
   async () => {
     const response = await axios.get(
-      "https://reduxtoolkit-example-student-management.tanaypratap.repl.co/students"
+      "https://reduxtoolkit-example-student-management-forked.shreyanshtiwar2.repl.co/students"
     );
 
     return response.data;
@@ -17,10 +17,10 @@ export const addStudentAsync = createAsyncThunk(
   "students/addStudent",
   async (newStudent) => {
     const response = await axios.post(
-      "https://reduxtoolkit-example-student-management.tanaypratap.repl.co/students",
+      "https://reduxtoolkit-example-student-management-forked.shreyanshtiwar2.repl.co/students",
       newStudent
     );
-    console.log(response.data);
+
     return response.data;
   }
 );
@@ -29,7 +29,7 @@ export const updateStudentAsync = createAsyncThunk(
   "students/updateStudent",
   async ({ id, studentInfo }) => {
     const response = await axios.put(
-      `https://reduxtoolkit-example-student-management.tanaypratap.repl.co/students/${id}`,
+      `https://reduxtoolkit-example-student-management-forked.shreyanshtiwar2.repl.co/students/${id}`,
       studentInfo
     );
 
@@ -40,12 +40,9 @@ export const updateStudentAsync = createAsyncThunk(
 export const deleteStudentAsync = createAsyncThunk(
   "students/deleteStudent",
   async (id) => {
-    console.log(id);
     const response = await axios.delete(
-      `https://reduxtoolkit-example-student-management.tanaypratap.repl.co/students/${id}`
+      `https://reduxtoolkit-example-student-management-forked.shreyanshtiwar2.repl.co/students/${id}`
     );
-
-    console.log(response);
 
     return response.data;
   }
@@ -75,6 +72,9 @@ export const studentSlice = createSlice({
     },
     setIsActive: (state, action) => {
       state.isActive = action.payload;
+    },
+    setShow: (state, action) => {
+      state.show = action.payload;
     },
   },
 
@@ -150,6 +150,7 @@ export const studentSlice = createSlice({
   },
 });
 
-export const { setFilter, setSortBy, setIsActive } = studentSlice.actions;
+export const { setFilter, setSortBy, setIsActive, setShow } =
+  studentSlice.actions;
 
 export default studentSlice.reducer;
