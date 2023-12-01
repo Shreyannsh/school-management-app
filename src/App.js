@@ -10,7 +10,7 @@ import ClassView from "./components/class/classView";
 import School from "./components/school/school";
 import StudentDetails from "./components/student/studentDetails/studentDetails";
 import StudentForm from "./components/student/studentForm/studentForm";
-import StudentView from "./components/student/studentView/studentView";
+import StudentView from "./components/student/studentList/studentList";
 import ClassList from "./components/class/classList";
 import Loading from "./components/loading/loading";
 import { fetchStudents } from "./features/student/studentSlice";
