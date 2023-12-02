@@ -1,10 +1,24 @@
+.classViewPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.tableSection {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+}
+
 table {
   border-collapse: collapse;
   border-radius: 10px;
   overflow: hidden;
   width: 70%;
   margin: 25px 0;
-  font-size: 0.9em;
+  font-size: 1rem;
   font-family: sans-serif;
   min-width: 400px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -36,7 +50,6 @@ tbody tr:last-of-type {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 100vh;
   margin-top: 1.5rem;
 }
 
@@ -49,4 +62,54 @@ tbody tr:last-of-type {
   height: 1.5rem;
   width: 7rem;
   margin-left: 1rem;
+}
+
+@media (max-width: 786px) {
+  td,
+  th {
+    padding: 12px 10px;
+  }
+
+  thead tr {
+    background-color: #009879;
+    color: #ffffff;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #665e5e;
+  }
+
+  tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+
+  tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+  }
+
+  .filterSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 1.5rem;
+  }
+
+  .classViewLabel {
+    font-size: larger;
+    font-weight: 400;
+  }
+
+  .selectBox {
+    height: 1.5rem;
+    width: 7rem;
+    margin-left: 1rem;
+  }
+}
+
+@media (max-width: 555px) {
+  td,
+  th {
+    padding: 12px 10px;
+    word-break: break-all;
+  }
 }

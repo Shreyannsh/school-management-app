@@ -1,0 +1,103 @@
+.detailPage {
+  width: fit-content;
+  height: 15rem;
+  margin: 2rem 0rem;
+  padding: 2rem 2rem;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  border: 2px solid var(--off-white);
+  box-shadow: 1px 2px 2px 1px var(--off-white);
+  background-color: var(--opac-black);
+}
+
+.subSection1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  padding-right: 13rem;
+}
+
+.subSection2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+
+  margin-right: 5rem;
+}
+
+.detailSection {
+  display: flex;
+  justify-content: space-around;
+  padding: 0rem 2rem;
+}
+
+.detailPage p {
+  text-align: left;
+  font-size: 1.5rem;
+  color: var(--off-white);
+}
+
+.detailPage b {
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+  color: var(--light-);
+}
+
+.editLink {
+  padding: 3px 10px;
+  margin-right: 2rem;
+  border-radius: 5px;
+  background-color: #0066b2;
+  color: antiquewhite;
+  font-size: large;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  top: 5px;
+}
+
+.editLink:hover {
+  background-color: black;
+}
+
+.deleteBtn {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: red;
+  color: antiquewhite;
+  font-size: large;
+  font-weight: 500;
+  cursor: pointer;
+  margin-left: 5rem;
+  border: transparent;
+}
+
+.deleteBtn:hover {
+  background-color: black;
+}
+
+.btnSection {
+  display: flex;
+  justify-content: space-around;
+  padding: 0rem 2rem;
+}
+
+.notFoundMsg {
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  height: 100%;
+  width: 100%;
+  margin-top: 5rem;
+  color: red;
+}
+
+.message {
+  border: transparent;
+  font-weight: 500;
+  padding: 25px 20px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 15px rgb(255, 0, 0, 0.25);
+}

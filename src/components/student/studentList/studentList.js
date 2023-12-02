@@ -1,9 +1,11 @@
 // import "./studentView.css";
-import "../../../common.css";
+import "../../../styles/list.css";
 
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { IoPersonAddOutline } from "react-icons/io5";
+import { FaUserGraduate } from "react-icons/fa6";
+
 import { useDispatch, useSelector } from "react-redux";
 
 import { setIsActive } from "../../../features/student/studentSlice";
@@ -28,7 +30,10 @@ function StudentView() {
   return (
     <div>
       <Loading show={show} />
-      <h1>Student List</h1>
+      <h1>
+        <FaUserGraduate className="icon" />
+        Student List
+      </h1>
       <div className="addComponent">
         <Link className="addLink" to="/studentForm/add/''">
           <h2>
@@ -39,35 +44,52 @@ function StudentView() {
       </div>
 
       <div className="List">
-        {alphabeticSortedStudent.length <= 0 ? (
+        {alphabeticSortedStudent.length <= 0 && show === false ? (
           <div className="notFoundMsg">
             <div className="message">No Student added Yet !</div>
           </div>
         ) : (
-          alphabeticSortedStudent?.map((student) => (
-            <li key={student._id}>
-              <div className="profile">
-                <Link
-                  className="detailLink"
-                  to={`/studentDetails/${student._id}`}
-                >
-                  <p className="value">
-                    name:
-                    <b className="textValue">{student.name}</b>
-                  </p>
-                  <p className="value">
-                    age:
-                    <b className="textValue">{student.age} years</b>
-                  </p>
+          alphabeticSortedStudent?.map((student) => {
+            let gradePostfix = "th";
+            const gradePostfixFunction = () => {
+              if (student.grade === "1") {
+                gradePostfix = "st";
+              } else if (student.grade === "2") {
+                gradePostfix = "nd";
+              } else if (student.grade === "3") {
+                gradePostfix = "rd";
+              }
+            };
+            gradePostfixFunction();
+            console.log(gradePostfix);
+            return (
+              <li key={student._id}>
+                <div className="profile">
+                  <Link
+                    className="detailLink"
+                    to={`/studentDetails/${student._id}`}
+                  >
+                    <p className="value">
+                      name:
+                      <b className="textValue">{student.name}</b>
+                    </p>
+                    <p className="value">
+                      age:
+                      <b className="textValue">{student.age} years</b>
+                    </p>
 
-                  <p className="value">
-                    garde:
-                    <b className="textValue">{student.grade}th</b>
-                  </p>
-                </Link>
-              </div>
-            </li>
-          ))
+                    <p className="value">
+                      garde:
+                      <b className="textValue">
+                        {student.grade}
+                        {gradePostfix}
+                      </b>
+                    </p>
+                  </Link>
+                </div>
+              </li>
+            );
+          })
         )}
       </div>
     </div>

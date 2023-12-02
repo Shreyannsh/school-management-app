@@ -1,0 +1,88 @@
+/* listing css */
+
+.List {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  height: 100%;
+}
+
+.pageHeading {
+  display: flex;
+  justify-content: center;
+}
+
+.profile {
+  /* border: 1px solid rgb(134, 134, 134); */
+  border: 1px solid rgb(255, 235, 212);
+  margin: 1rem;
+  text-align: left;
+  text-decoration: none;
+  padding: 10px 5px 0px 5px;
+  width: 10rem;
+  word-wrap: break-word;
+  border-radius: 5px;
+  background-color: var(--opac-black);
+}
+
+.profile:hover {
+  box-shadow: 0px 0px 5px 0px var(--off-white);
+  background-color: rgba(5, 5, 5, 0.9);
+}
+
+.profile .detailLink {
+  color: var(--off-white);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.value {
+  font-size: smaller;
+  margin-top: -7px;
+  color: rgb(197, 197, 197);
+}
+
+.textValue {
+  margin-left: 5px;
+  font-size: 14px;
+  font-weight: 600;
+  color: black;
+  color: rgb(255, 235, 212);
+}
+
+.addComponent {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.addLink {
+  text-decoration: none;
+  color: #0066b2;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+  padding: 0px 10px;
+  border-radius: 10px;
+}
+
+.addLink:hover {
+  border: 1px solid #0066b2;
+  box-shadow: 1px 2px 2px 1px rgba(0, 102, 178);
+}
+
+.icon {
+  position: relative;
+  top: 4px;
+  margin-right: 10px;
+  font-size: 2rem;
+}
+
+@media (max-width: 625px) {
+  .List {
+    justify-content: center;
+  }
+  .addComponent {
+    display: flex;
+    justify-content: center;
+  }
+}

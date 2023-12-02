@@ -3,7 +3,14 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  padding: 0rem 20rem;
+  padding: 0rem 20%;
+}
+
+.iconClass {
+  position: relative;
+  top: 12px;
+  right: 5px;
+  font-size: 3rem;
 }
 
 .classComponent {

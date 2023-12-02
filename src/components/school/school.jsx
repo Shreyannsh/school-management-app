@@ -2,6 +2,7 @@ import "./school.css";
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { FaSchool } from "react-icons/fa";
 
 import { updateSchoolStats } from "../../features/school/schoolSlice";
 import { setIsActive } from "../../features/student/studentSlice";
@@ -47,7 +48,10 @@ function School() {
 
   return (
     <div className="parent">
-      <h1 className="schoolTitle">School Statistic</h1>
+      <h1 className="schoolTitle">
+        <FaSchool className="icon" />
+        School Statistic
+      </h1>
       <div className="schoolStat">
         <p>
           <b>Total Students : </b>

@@ -49,7 +49,7 @@ function ClassView() {
   }, [dispatch]);
 
   return (
-    <div className="parent">
+    <div className="page">
       <h1>{className}th Class View</h1>
       <div className="filterSection">
         <div>
@@ -80,48 +80,50 @@ function ClassView() {
           </label>
         </div>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th>
-              <b>S.No.</b>
-            </th>
-            <th>
-              <b>Name</b>
-            </th>
-            <th>
-              <b>Age</b>
-            </th>
-            <th>
-              <b>Gender</b>
-            </th>
-            <th>
-              <b>Grade</b>
-            </th>
-            <th>
-              <b>Marks</b>
-            </th>
-            <th>
-              <b>Attendance</b>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {sortByHandler.map(
-            ({ name, age, marks, attendance, grade, gender }, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>{name}</td>
-                <td>{age}</td>
-                <td>{gender ? gender : "-"}</td>
-                <td>{grade}</td>
-                <td>{marks ? marks : "-"}</td>
-                <td>{attendance ? attendance : "-"}</td>
-              </tr>
-            )
-          )}
-        </tbody>
-      </table>
+      <div className="tableSection">
+        <table>
+          <thead>
+            <tr>
+              <th>
+                <b>S.No.</b>
+              </th>
+              <th>
+                <b>Name</b>
+              </th>
+              <th>
+                <b>Age</b>
+              </th>
+              <th>
+                <b>Gender</b>
+              </th>
+              <th>
+                <b>Grade</b>
+              </th>
+              <th>
+                <b>Marks</b>
+              </th>
+              <th>
+                <b>Attendance</b>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {sortByHandler.map(
+              ({ name, age, marks, attendance, grade, gender }, index) => (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>{name}</td>
+                  <td>{age}</td>
+                  <td>{gender ? gender : "-"}</td>
+                  <td>{grade}</td>
+                  <td>{marks ? marks : "-"}</td>
+                  <td>{attendance ? attendance : "-"}</td>
+                </tr>
+              )
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

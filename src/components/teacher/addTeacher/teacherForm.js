@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import "./teacherForm.css";
-import "../../../common.css";
+import "../../../styles/addEditForm.css";
 
 import Loading from "../../loading/loading";
 
@@ -100,7 +100,7 @@ const TeacherForm = () => {
             <input
               className="forminput"
               placeholder="contact number"
-              type="text"
+              type="number"
               value={teacherInfo.contactNumber}
               onChange={(e) =>
                 setTeacherInfo({

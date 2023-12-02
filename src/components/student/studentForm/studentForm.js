@@ -1,5 +1,5 @@
 // import "./studentForm.css";
-import "../../../common.css";
+import "../../../styles/addEditForm.css";
 
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -115,7 +115,7 @@ function StudentForm() {
           <label className="formTitle">
             <span>Name:</span>
             <input
-              className="forminputName"
+              className="forminput"
               type="text"
               placeholder="student name"
               value={studentInfo.name}
@@ -138,47 +138,59 @@ function StudentForm() {
           </label>
         </div>
         <div className="inputSection">
-          <div>
-            <label className="formTitle">
-              Gender:
-              <input
-                className="forminputRadio"
-                type="radio"
-                name="gender"
-                value="Male"
-                checked={studentInfo.gender === "Male" ? true : ""}
-                onChange={(e) =>
-                  setStudentInfo({ ...studentInfo, gender: e.target.value })
-                }
-              />
-              Male
-            </label>
+          <label className="formTitle">
+            Gender:
+            <input
+              className="forminputRadio"
+              type="radio"
+              name="gender"
+              value="Male"
+              checked={studentInfo.gender === "Male" ? true : ""}
+              onChange={(e) =>
+                setStudentInfo({ ...studentInfo, gender: e.target.value })
+              }
+            />
+            Male
+            <input
+              className="forminputRadio"
+              type="radio"
+              name="gender"
+              value="Female"
+              checked={studentInfo.gender === "Female" ? true : ""}
+              onChange={(e) =>
+                setStudentInfo({ ...studentInfo, gender: e.target.value })
+              }
+            />
+            Female
+          </label>
 
-            <label>
-              <input
-                className="forminputRadio"
-                type="radio"
-                name="gender"
-                value="Female"
-                checked={studentInfo.gender === "Female" ? true : ""}
-                onChange={(e) =>
-                  setStudentInfo({ ...studentInfo, gender: e.target.value })
-                }
-              />
-              Female
-            </label>
-          </div>
           <label className="formTitle">
             Grade:
-            <input
-              className="forminput"
-              type="text"
+            {/* <input
+              type="number"
               placeholder="Student Grade"
               value={studentInfo.grade}
+            /> */}
+            <select
+              className="forminputSelect"
               onChange={(e) =>
                 setStudentInfo({ ...studentInfo, grade: e.target.value })
               }
-            />
+            >
+              <option value="">Select</option>
+              <option value="1">1st</option>
+              <option value="2">2nd</option>
+              <option value="3">3rd</option>
+              <option value="4">4th</option>
+              <option value="5">5th</option>
+              <option value="6">6th</option>
+              <option value="7">7th</option>
+              <option value="8">8th</option>
+              <option value="9">9th</option>
+              <option value="10">10th</option>
+              <option value="11">11th</option>
+              <option value="12">12th</option>
+            </select>
           </label>
         </div>
 
