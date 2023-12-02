@@ -8,8 +8,9 @@
   display: flex;
   justify-content: center;
   border-radius: 10px;
-  border: 2px solid rgb(160, 160, 160);
+  border: 2px solid var(--off-white);
   box-shadow: 1px 2px 2px 1px rgb(0, 0, 0, 0.6);
+  background-color: var(--opac-black);
 }
 
 .inputSectionTeacher {

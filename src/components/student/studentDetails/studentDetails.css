@@ -1,5 +1,6 @@
 .studentDetailPage {
-  width: fit-content;
+  max-width: fit-content;
+  width: 80%;
   height: 15rem;
   margin: 2rem 0rem;
   padding: 2rem 2rem;

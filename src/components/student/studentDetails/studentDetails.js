@@ -27,7 +27,11 @@ function StudentDetails() {
   return (
     <div className="parent">
       <Loading show={show} />
+
       <h1>Student Details</h1>
+      <Link className="backBtn" to="/">
+        back
+      </Link>
       <div className="detailPage">
         <div className="subSection1">
           <p>

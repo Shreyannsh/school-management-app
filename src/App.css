@@ -7,6 +7,13 @@
   position: relative; */
 }
 
+:root {
+  --off-white: rgb(255, 235, 212);
+  --light-grey: rgb(197, 197, 197);
+  --opac-black: rgb(32, 32, 32, 0.7);
+  --red: rgb(204, 0, 0);
+}
+
 .backgroundImage {
   position: fixed;
   background-image: url("../public/assests/campus-aerial-view.jpg");
@@ -25,12 +32,6 @@
   height: 100%;
 }
 
-:root {
-  --off-white: rgb(255, 235, 212);
-  --light-grey: rgb(197, 197, 197);
-  --opac-black: rgba(5, 5, 5, 0.6);
-}
-
 .allPages {
   margin-top: 5rem;
   min-width: 100vh;
@@ -45,4 +46,19 @@ h1 {
 .page {
   min-height: 100vh;
   height: 100%;
+}
+
+.backBtn {
+  text-decoration: none;
+  color: black;
+  font-size: larger;
+  font-weight: 600;
+  position: absolute;
+  padding: 0px 10px;
+  top: 1.5rem;
+  left: 2rem;
+}
+
+.backBtn:hover {
+  color: var(--off-white);
 }

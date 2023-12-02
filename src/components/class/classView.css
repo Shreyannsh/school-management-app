@@ -39,7 +39,11 @@ tbody tr {
 }
 
 tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
+  background-color: rgb(242, 242, 242, 0.8);
+}
+
+tbody tr:nth-of-type(odd) {
+  background-color: rgb(157, 144, 144, 0.8);
 }
 
 tbody tr:last-of-type {
@@ -50,18 +54,19 @@ tbody tr:last-of-type {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin-top: 1.5rem;
+  margin-top: 3rem;
 }
 
 .classViewLabel {
   font-size: larger;
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .selectBox {
   height: 1.5rem;
   width: 7rem;
   margin-left: 1rem;
+  border-radius: 5px;
 }
 
 @media (max-width: 786px) {
@@ -92,17 +97,6 @@ tbody tr:last-of-type {
     flex-direction: row;
     justify-content: space-around;
     margin-top: 1.5rem;
-  }
-
-  .classViewLabel {
-    font-size: larger;
-    font-weight: 400;
-  }
-
-  .selectBox {
-    height: 1.5rem;
-    width: 7rem;
-    margin-left: 1rem;
   }
 }
 

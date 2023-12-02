@@ -5,7 +5,7 @@ import {
 } from "../../../features/teacher/teacherSlice";
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import "./teacherForm.css";
@@ -61,6 +61,9 @@ const TeacherForm = () => {
     <div className="parent">
       <Loading show={show} />
       <h1>{mode === "edit" ? "Edit Teacher" : "Add Teacher"}</h1>
+      <Link className="backBtn" to="/teacherList">
+        back
+      </Link>
       <div className="addTeacherForm">
         <div className="inputSectionTeacher">
           <label className="formTitle">

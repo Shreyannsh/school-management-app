@@ -2,7 +2,7 @@
 import "../../../styles/addEditForm.css";
 
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useParams } from "react-router";
 import { toast } from "react-toastify";
@@ -109,6 +109,9 @@ function StudentForm() {
   return (
     <div className="parent">
       <Loading show={show} />
+      <Link className="backBtn" to="/">
+        back
+      </Link>
       <h1>{mode === "edit" ? "Edit Student" : "Add Student"}</h1>
       <div className="addForm">
         <div className="inputSection">

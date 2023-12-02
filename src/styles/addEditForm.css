@@ -4,7 +4,6 @@
   align-items: center;
   position: relative;
   width: 100%;
-  min-height: 100vh;
   height: 100%;
 }
 
@@ -18,8 +17,9 @@
   flex-direction: column;
   justify-content: space-around;
   border-radius: 10px;
-  border: 2px solid rgb(160, 160, 160);
+  border: 2px solid var(--off-white);
   box-shadow: 1px 2px 2px 1px rgb(0, 0, 0, 0.6);
+  background-color: var(--opac-black);
 }
 
 .inputSection {
@@ -34,9 +34,10 @@
   font-weight: 500;
   display: flex;
   width: 100%;
+  color: var(--light-grey);
 }
 
-.forminputName {
+/* .forminputName {
   height: 1.5rem;
   font-size: large;
   border: transparent;
@@ -45,14 +46,14 @@
   padding: 5px 10px;
   margin-left: 2.8rem;
   width: 80%;
-}
+} */
 
 .forminput {
   height: 1.5rem;
   font-size: large;
   border: transparent;
   border-radius: 10px;
-  background-color: rgb(160, 160, 160);
+  background-color: var(--off-white);
   padding: 5px 10px;
   margin-left: 1.3rem;
   margin-right: 1rem;
@@ -65,7 +66,7 @@
   font-size: large;
   border: transparent;
   border-radius: 10px;
-  background-color: rgb(160, 160, 160);
+  background-color: var(--off-white);
   padding: 5px 10px;
   margin-left: 0.5rem;
   margin-top: -0.5rem;
@@ -87,12 +88,28 @@
   font-size: large;
   font-weight: 500;
   cursor: pointer;
+  width: 10rem;
 }
 .addBtn:hover {
   background-color: #085088;
 }
 
 @media (max-width: 555px) {
+  .addForm {
+    max-width: 45rem;
+    width: 90%;
+    height: 25rem;
+    margin: 2rem 0rem;
+    padding: 2rem 0rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 10px;
+    border: 2px solid var(--off-white);
+    box-shadow: 1px 2px 2px 1px rgb(0, 0, 0, 0.6);
+    background-color: var(--opac-black);
+  }
+
   .inputSection {
     display: flex;
     flex-direction: column;

@@ -61,7 +61,7 @@ function StudentView() {
               }
             };
             gradePostfixFunction();
-            console.log(gradePostfix);
+
             return (
               <li key={student._id}>
                 <div className="profile">
