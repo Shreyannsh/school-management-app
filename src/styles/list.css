@@ -22,7 +22,7 @@
   width: 10rem;
   word-wrap: break-word;
   border-radius: 5px;
-  background-color: var(--opac-black);
+  background-color: rgb(32, 32, 32, 0.7);
 }
 
 .profile:hover {
@@ -47,7 +47,6 @@
   margin-left: 5px;
   font-size: 14px;
   font-weight: 600;
-  color: black;
   color: rgb(255, 235, 212);
 }
 
@@ -58,7 +57,7 @@
 
 .addLink {
   text-decoration: none;
-  color: #0066b2;
+  color: #cc0000;
   margin-left: 1rem;
   margin-bottom: 0.5rem;
   padding: 0px 10px;
@@ -66,8 +65,8 @@
 }
 
 .addLink:hover {
-  border: 1px solid #0066b2;
-  box-shadow: 1px 2px 2px 1px rgba(0, 102, 178);
+  border: 1px solid #cc0000;
+  box-shadow: 1px 2px 2px 1px #cc0000;
 }
 
 .icon {
@@ -75,6 +74,7 @@
   top: 4px;
   margin-right: 10px;
   font-size: 2rem;
+  z-index: -1;
 }
 
 @media (max-width: 625px) {
