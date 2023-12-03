@@ -1,4 +1,3 @@
-// import "./studentForm.css";
 import "../../../styles/addEditForm.css";
 
 import { useEffect, useState } from "react";
@@ -29,34 +28,10 @@ function StudentForm() {
     name: "",
     age: "",
     grade: "",
-    gender: "boy",
+    gender: "",
     attendance: "",
     marks: "",
   });
-
-  // const [editInfo, setEditInfo] = useState({
-  //   name: "",
-  //   age: "",
-  //   grade: "",
-  //   gender: "boy",
-  //   attendance: "",
-  //   marks: "",
-  // });
-
-  // const [isTrue, setIsTrue] = useState([]);
-
-  // const isEqual = () => {
-  //   const studentKeys = Object.keys(studentInfo);
-  //   const editKeys = Object.keys(editInfo);
-
-  //   for (let key of studentKeys) {
-  //     if (studentKeys[key] === editKeys[key]) {
-  //       setIsTrue([...isTrue, true]);
-  //     } else {
-  //       setIsTrue([...isTrue, false]);
-  //     }
-  //   }
-  // };
 
   const handleAddStudent = () => {
     if (mode === "edit") {
@@ -72,7 +47,7 @@ function StudentForm() {
           name: "",
           age: "",
           grade: "",
-          gender: "boy",
+          gender: "",
           attendance: 0,
           marks: 0,
         });
@@ -90,21 +65,8 @@ function StudentForm() {
         attendance: student?.attendance,
         marks: student?.marks,
       });
-
-      // setEditInfo({
-      //   name: student?.name,
-      //   age: student?.age,
-      //   grade: student?.grade,
-      //   gender: student?.gender,
-      //   attendance: student?.attendance,
-      //   marks: student?.marks,
-      // });
     }
   }, [mode]);
-
-  // useEffect(() => {
-  //   isEqual();
-  // }, [studentInfo]);
 
   return (
     <div className="parent">
@@ -169,11 +131,6 @@ function StudentForm() {
 
           <label className="formTitle">
             Grade:
-            {/* <input
-              type="number"
-              placeholder="Student Grade"
-              value={studentInfo.grade}
-            /> */}
             <select
               className="forminputSelect"
               onChange={(e) =>

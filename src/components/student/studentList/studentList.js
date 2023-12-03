@@ -1,4 +1,3 @@
-// import "./studentView.css";
 import "../../../styles/list.css";
 
 import { useEffect } from "react";
@@ -43,7 +42,7 @@ function StudentView() {
         </Link>
       </div>
 
-      <div className="List">
+      <div className="list">
         {alphabeticSortedStudent.length <= 0 && show === false ? (
           <div className="notFoundMsg">
             <div className="message">No Student added Yet !</div>
@@ -70,16 +69,16 @@ function StudentView() {
                     to={`/studentDetails/${student._id}`}
                   >
                     <p className="value">
-                      name:
+                      Name:
                       <b className="textValue">{student.name}</b>
                     </p>
                     <p className="value">
-                      age:
+                      Age:
                       <b className="textValue">{student.age} years</b>
                     </p>
 
                     <p className="value">
-                      garde:
+                      Grade:
                       <b className="textValue">
                         {student.grade}
                         {gradePostfix}

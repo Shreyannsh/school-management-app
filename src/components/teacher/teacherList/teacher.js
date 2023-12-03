@@ -43,7 +43,7 @@ function Teacher() {
         </Link>
       </div>
 
-      <div className="List">
+      <div className="list">
         {alphabeticSortedTeacher.length <= 0 && show === false ? (
           <div className="notFoundMsg">
             <div className="message">No Teacher added Yet !</div>

@@ -1,6 +1,6 @@
 /* listing css */
 
-.List {
+.list {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
@@ -9,7 +9,6 @@
 }
 
 .profile {
-  /* border: 1px solid rgb(134, 134, 134); */
   border: 1px solid var(--off-white);
   margin: 1rem;
   text-align: left;
@@ -75,7 +74,7 @@
 }
 
 @media (max-width: 625px) {
-  .List {
+  .list {
     justify-content: center;
     padding: 0rem;
   }

@@ -8,7 +8,7 @@ import {
   setSortBy,
   fetchStudents,
 } from "../../features/student/studentSlice";
-import { useParams } from "react-router";
+import { useParams, Link } from "react-router-dom";
 
 function ClassView() {
   const dispatch = useDispatch();
@@ -50,7 +50,11 @@ function ClassView() {
 
   return (
     <div className="page">
-      <h1>{className}th Class View</h1>
+      <Link className="classBackBtn" to="/classList">
+        back
+      </Link>
+      <h1>Class {className}</h1>
+
       <div className="filterSection">
         <div>
           <label className="classViewLabel">

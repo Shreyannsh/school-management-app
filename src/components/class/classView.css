@@ -30,7 +30,7 @@ th {
 }
 
 thead tr {
-  background-color: #009879;
+  background-color: var(--green);
   color: #ffffff;
 }
 
@@ -47,7 +47,7 @@ tbody tr:nth-of-type(odd) {
 }
 
 tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
+  border-bottom: 2px solid var(--green);
 }
 
 .filterSection {
@@ -69,6 +69,20 @@ tbody tr:last-of-type {
   border-radius: 5px;
 }
 
+.classBackBtn {
+  text-decoration: none;
+  color: black;
+  font-size: larger;
+  font-weight: 600;
+  position: absolute;
+  padding: 0px 10px;
+  left: 2rem;
+}
+
+.classBackBtn:hover {
+  color: var(--off-white);
+}
+
 @media (max-width: 786px) {
   td,
   th {
@@ -76,7 +90,7 @@ tbody tr:last-of-type {
   }
 
   thead tr {
-    background-color: #009879;
+    background-color: var(--green);
     color: #ffffff;
   }
 
@@ -89,7 +103,7 @@ tbody tr:last-of-type {
   }
 
   tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
+    border-bottom: 2px solid var(--green);
   }
 
   .filterSection {
